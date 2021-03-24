@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "mpg.team.ff"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 3
+        versionName "3.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }
+    ndkVersion = '21.0.6113669'
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'com.android.support:support-v4:28.0.0'
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+}
